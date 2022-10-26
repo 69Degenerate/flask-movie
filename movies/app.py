@@ -3,7 +3,6 @@ from flask import Flask,render_template,request
 from pymongo import MongoClient
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'the random string'   
 c = MongoClient("mongodb+srv://vishal:root@cluster0.4g6eqfu.mongodb.net/?retryWrites=true&w=majority")
 data=c.db.movieinfo
 
@@ -28,4 +27,6 @@ def download(id=''):
     rec=data.find_one({'name':id})
     return render_template('download.html',rec=rec)
 
-app.run(debug=True)
+
+if __name__ == '__main__':
+    app.run(debug=True, use_reloader=True)
