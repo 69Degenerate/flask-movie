@@ -7,7 +7,7 @@ app.config['SECRET_KEY'] = 'the random string'
 c = MongoClient("mongodb+srv://vishal:root@cluster0.4g6eqfu.mongodb.net/?retryWrites=true&w=majority")
 data=c.db.movieinfo
 
-@app.route("")
+@app.route("/")
 def home():
     info=data.find()
     return render_template('home.html',info=info)
